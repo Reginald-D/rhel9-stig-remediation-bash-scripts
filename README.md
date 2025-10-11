@@ -1,0 +1,1 @@
+# rhel9-stig-remediation-bash-scripts
