@@ -1,0 +1,12 @@
+#!/bin/bash
+# .SYNOPSIS
+# Remediates RHEL-09-611090: Enforce minimum 15-character passwords
+# Created by Reginald D on 2025-11-02
+# .NOTES: Ensures minlen=15 in pwquality configs for RHEL 9 compliance
+# .USAGE: sudo ./RHEL-09-611090.sh
+
+[ "$(id -u)" -eq 0 ] || { echo "Run as root"; exit 1; }
+mkdir -p /etc/security/pwquality.conf.d
+sed -i '/^minlen/d' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf 2>/dev/null
+echo "minlen = 15" > /etc/security/pwquality.conf.d/99-minlen.conf
+grep minlen /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
