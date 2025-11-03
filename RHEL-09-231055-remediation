@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# .SYNOPSIS
+# Remediation Script for STIG ID: RHEL-09-231055 
+# Ensures RHEL 9 prevents code execution on user home directories by enabling the "noexec" mount option.
+# Author: Reginald D | Date: 11-03-2025
+
+# .DESCRIPTION
+# This script updates /etc/fstab to include the "noexec" option for the /home directory and remounts it to prevent execution of binaries in user home directories.
+
+# .USAGE
+# sudo ./RHEL-09-231055.sh
+
+[ "$(id -u)" -ne 0 ] && { echo "Run as root"; exit 1; }
+grep -q '/home' /etc/fstab && sed -i '/\/home/s/defaults/defaults,noexec/' /etc/fstab || echo "No /home entry found in /etc/fstab."
+mount -o remount,noexec /home && echo "/home remounted with noexec option."
