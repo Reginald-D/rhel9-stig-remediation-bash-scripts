@@ -1,0 +1,14 @@
+#!/bin/bash
+# .SYNOPSIS
+# Remediation Script for STIG ID: RHEL-09-611105 | Ensures RHEL 9 prevents the use of dictionary words for passwords.
+# Author: Reginald D | Date: 11-03-2025
+# .DESCRIPTION
+# This script configures pwquality to enforce dictionary word checking, ensuring users cannot use common or easily guessed passwords.
+# .USAGE
+# sudo ./RHEL-09-611105.sh
+
+[ "$(id -u)" -eq 0 ] && { echo "Run as root"; exit 1; }
+mkdir -p /etc/security/pwquality.conf.d
+CONF="/etc/security/pwquality.conf.d/99-dictcheck.conf"
+grep -q "dictcheck" "$CONF" && sed -i 's/^dictcheck.*/dictcheck = 1/' "$CONF" || echo "dictcheck = 1" > "$CONF"
+echo "Dictionary word restriction applied successfully."
