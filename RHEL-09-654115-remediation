@@ -1,0 +1,13 @@
+#!/bin/bash
+# .SYNOPSIS
+# Remediation Script for STIG ID: RHEL-09-654115 | Ensures RHEL 9 audits all uses of the pam_timestamp_check command.
+# Author: Reginald D | Date: 11-03-2025
+# .DESCRIPTION
+# This script adds an audit rule to log executions of /usr/sbin/pam_timestamp_check, ensuring compliance with DoD STIG requirements.
+# .USAGE
+# sudo ./RHEL-09-654115.sh
+
+[ "$(id -u)" -eq 0 ] && { echo "Run as root"; exit 1; }
+RULE='-a always,exit -F path=/usr/sbin/pam_timestamp_check -F perm=x -F auid>=1000 -F auid!=-1 -k privileged-pam_timestamp_check'
+grep -q "pam_timestamp_check" /etc/audit/rules.d/audit.rules || echo "$RULE" >> /etc/audit/rules.d/audit.rules
+augenrules --load && echo "Audit rule applied successfully."
