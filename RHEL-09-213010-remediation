@@ -1,0 +1,9 @@
+#!/bin/bash
+# RHEL-09-213010 fix
+[ "$(id -u)" -eq 0 ] || { echo "Run as root"; exit 1; }
+
+sed -i '/kernel\.dmesg_restrict/d' /etc/sysctl.* /etc/sysctl.d/*.conf 2>/dev/null
+echo "kernel.dmesg_restrict = 1" > /etc/sysctl.d/99-dmesg-restrict.conf
+
+sysctl -w kernel.dmesg_restrict=1 >/dev/null
+sysctl --system | grep dmesg_restrict
