@@ -1,0 +1,26 @@
+#!/bin/bash
+# .SYNOPSIS
+#   Configures RHEL 9 to audit all uses of the passwd command,
+#   ensuring traceability of password changes and user account modifications.
+#
+# .NOTES
+#   Author: Reginald D
+#   Date: 11/03/2025
+#   STIG ID: RHEL-09-654120
+#   SRG: SRG-OS-000037-GPOS-00015
+#   Severity: Medium
+#   CCI: CCI-000130, CCI-000135, CCI-000169, CCI-000172, CCI-002884
+#   Vulnerability ID: V-258198
+#   Purpose: Ensures all executions of passwd are audited to support incident investigation and accountability.
+#
+# .TESTED ON
+#   RHEL 9 (STIG-Compliant Build)
+#
+# .USAGE
+#   sudo ./RHEL-09-654120.sh
+
+AUDIT_RULE="-a always,exit -F path=/usr/bin/passwd -F perm=x -F auid>=1000 -F auid!=unset -k privileged-passwd"
+RULES_FILE="/etc/audit/rules.d/audit.rules"
+grep -qxF "$AUDIT_RULE" "$RULES_FILE" || echo "$AUDIT_RULE" | sudo tee -a "$RULES_FILE" > /dev/null
+sudo augenrules --load
+echo "Audit rule for passwd command successfully applied."
