@@ -1,27 +1,18 @@
-# STIGS-REMED-VIA-RHEL9 STIG Remediation Bash Scripts
+# Red Hat Enterprise Linux 9 STIG Remediations
 
-This repository contains PowerShell scripts for automating the remediation of STIG (Security Technical Implementation Guide) findings on Windows 10 systems. The goal of this project is not only to ensure compliance with security best practices but also to **improve my proficiency in using PowerShell** for real-world system administration and security tasks. Each script corresponds to a specific STIG ID and applies the recommended configuration automatically.
+This repository contains Bash scripts for automating the remediation of STIG (Security Technical Implementation Guide) findings on RHEL 9 systems. The purpose of this project is to ensure compliance with Department of Defense security standards while enhancing my proficiency in Bash scripting for Linux system administration and security hardening. Each script directly corresponds to a specific STIG ID and applies the recommended configuration automatically to strengthen system integrity and reduce vulnerabilities.
 
-# STIG Remediations Implemented
+# Implemented STIG Remediations
 
-| Date       | STIG Application | GitHub Link | Description |
+| Date       | STIG ID | GitHub | Description |
 |-----------|-----------------|------------|------------|
-| 10/8/2025 | STIG-ID: WN11-AU-000500 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/STIG-ID-WN10-AU-000500) | Implemented PowerShell remediation for STIG-ID: WN10-AU-000500 |
-| 10/6/2025 | STIG-ID: WN11-AU-000505 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-AU-000505) | Implemented PowerShell remediation for STIG-ID: WN10-AU-000505 |
-| 10/6/2025 | STIG-ID: WN11-AU-000510 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-AU-000510) | Remediation for STIG Application (STIG-ID: WN10-AU-000510) |
-| 10/6/2025 | STIG-ID: WN11-CC-000038 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000038) | Remediation for STIG Application (STIG-ID: WN10-CC-000038) |
-| 10/6/2025 | STIG-ID: WN11-CC-000039 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000039) | Remediation for STIG Application (STIG-ID: WN10-CC-000039) |
-| 10/6/2025 | STIG-ID: WN11-CC-000040 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000039) | Remediation for STIG Application STIG ID: WN10-CC-000040 |
-| 10/6/2025 | STIG-ID: WN11-CC-000055 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000055) | Remediation for STIG Application STIG ID: WN10-CC-000055 |
-| 10/6/2025 | STIG-ID: WN11-CC-000044 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000044) | Remediation for STIG Application STIG ID: WN10-CC-000044 |
-| 10/6/2025 | STIG-ID: WN11-CC-000066 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000066) | Remediation for STIG Application WN10-CC-000066 |
-| 10/7/2025 | STIG-ID: WN11-00-000160 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/tree/main) | PowerShell remediation for WN10-00-000160 |
-| 10/7/2025 | STIG-ID: WN11-00-000175 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-00-000175) | PowerShell remediation for WN10-00-000175 |
-| 10/7/2025 | STIG-ID: WN11-CC-000007 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/tree/main) | PowerShell remediation for WN10-CC-000007 |
-| 10/7/2025 | STIG-ID: WN11-CC-000010 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/tree/main) | PowerShell remediation for WN10-CC-000010 |
-| 10/7/2025 | STIG-ID: WN11-CC-000052 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000052) | PowerShell remediation for WN10-CC-000052 |
-| 10/7/2025 | STIG-ID: WN11-CC-000220 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000220) | PowerShell remediation for WN10-CC-000220 |
-| 10/7/2025 | STIG-ID: WN11-CC-000230 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/tree/main) | PowerShell remediation for WN10-CC-000230 |
-| 10/7/2025 | STIG-ID: WN11-CC-000280 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000280) | PowerShell remediation for WN10-CC-000280 |
-| 10/7/2025 | STIG-ID: WN11-CC-000300 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000300) | PowerShell remediation for WN10-CC-000300 |
-| 10/7/2025 | STIG-ID: WN11-CC-000327 | [Link](https://github.com/enioluww/STIGS-REMED-VIA-Powershell/blob/main/WN10-CC-000327) | PowerShell remediation for WN10-CC-000327 |
+| 11/3/2025 | RHEL-09-213010 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-213010-remediation) | Configures the kernel parameter to restrict access to kernel message logs |
+| 11/4/2025 | RHEL-09-213060 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-213060-remediation) | Disables the SCTP kernel module to minimize potential attack vectors |
+| 11/4/2025 | RHEL-09-231055 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-231055-remediation) | Prevents code execution on user home directories by enabling the "noexec" mount option |
+| 11/4/2025 | RHEL-09-611090 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-611090-remediation) | Ensures minlen=15 in pwquality configs for RHEL 9 compliance |
+| 11/4/2025 | RHEL-09-611105 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-611105-remediation) | Ensures RHEL 9 prevents the use of dictionary words for passwords |
+| 11/4/2025 | RHEL-09-611110 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-611110-remediation) | Enforce password complexity by strengthening defense against brute-force guessing attacks |
+| 11/4/2025 | RHEL-09-651025 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-651025-remediation) | Configures AIDE to enforce cryptographic integrity verification for RHEL 9 audit tools |
+| 11/4/2025 | RHEL-09-654115 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-654115-remediation) | Ensures RHEL 9 audits all uses of the pam_timestamp_check command |
+| 11/4/2025 | RHEL-09-654120 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-654120-remediation) | audit all uses of the passwd command, ensuring traceability |
+| 11/4/2025 | RHEL-09-654135 | [Link](https://github.com/Reginald-D/rhel9-stig-remediation-bash-scripts/blob/main/RHEL-09-654135-remediation) | Configures RHEL 9 to audit all uses of the ssh-agent command |
