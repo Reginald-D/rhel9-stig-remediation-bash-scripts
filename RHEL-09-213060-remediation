@@ -1,14 +1,26 @@
 #!/bin/bash
 # .SYNOPSIS
-# Remediation Script for STIG ID: RHEL-09-213060 This script is created to Disable Stream Control Transmission Protocol (SCTP)
-# Author: Reginald D on 11-02-2025
-# Description: This script ensures the SCTP kernel module is disabled to reduce the system's attack surface.
-# SCTP is rarely used in standard environments and poses security risks if left enabled
-# It enforces the required DoD STIG configuration by blacklisting and preventing the SCTP module from loading.
+#   Disables the Stream Control Transmission Protocol (SCTP) kernel module to minimize 
+#   potential attack vectors and enforce DoD STIG compliance on RHEL 9 systems.
+#
+# .NOTES
+#   Author: Reginald D
+#   Date: 11/03/2025
+#   STIG ID: RHEL-09-213060
+#   SRG: SRG-OS-000095-GPOS-00049
+#   Severity: Medium
+#   CCI: CCI-000381
+#   Vulnerability ID: V-257808
+#   Purpose: Blacklists and prevents the SCTP kernel module from loading to reduce system exposure to network-based threats.
+#
+# .TESTED ON
+#   RHEL 9 (STIG-Compliant Build)
+#
 # .USAGE
-# sudo ./RHEL-09-213060.sh
+#   sudo ./RHEL-09-213060.sh
 
-[ "$(id -u)" -eq 0 ] || { echo "run as root"; exit 1; }
+[ "$(id -u)" -eq 0 ] || { echo "Run as root"; exit 1; }
+
 CONF="/etc/modprobe.d/sctp.conf"
 mkdir -p /etc/modprobe.d
 echo -e "install sctp /bin/false\nblacklist sctp" > "$CONF"
