@@ -1,5 +1,24 @@
 #!/bin/bash
-# RHEL-09-213010 fix
+# .SYNOPSIS
+#   Configures the kernel parameter to restrict access to kernel message logs (dmesg),
+#   enhancing system security by preventing unauthorized users from viewing sensitive kernel information.
+#
+# .NOTES
+#   Author: Reginal D
+#   Date: 11/03/2025
+#   STIG ID: RHEL-09-213010
+#   SRG: SRG-OS-000095-GPOS-00049
+#   Severity: Medium
+#   CCI: CCI-000381
+#   Vulnerability ID: V-257801
+#   Purpose: Ensures the kernel.dmesg_restrict parameter is set to "1" to prevent unauthorized access to dmesg output.
+#
+# .TESTED ON
+#   RHEL 9 (STIG-Compliant Build)
+#
+# .USAGE
+#   sudo ./RHEL-09-213010.sh
+
 [ "$(id -u)" -eq 0 ] || { echo "Run as root"; exit 1; }
 
 sed -i '/kernel\.dmesg_restrict/d' /etc/sysctl.* /etc/sysctl.d/*.conf 2>/dev/null
