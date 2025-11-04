@@ -1,0 +1,25 @@
+#!/bin/bash
+# .SYNOPSIS
+#   Configures RHEL 9 to enforce password complexity by requiring at least one uppercase character,
+#   strengthening defense against brute-force and guessing attacks.
+#
+# .NOTES
+#   Author: Reginald D
+#   Date: 11/03/2025
+#   STIG ID: RHEL-09-611110
+#   SRG: SRG-OS-000069-GPOS-00037
+#   Severity: Medium
+#   CCI: CCI-004066, CCI-000192
+#   Vulnerability ID: V-258111
+#   Purpose: Ensures at least one uppercase character is required in passwords using pwquality.
+#
+# .TESTED ON
+#   RHEL 9 (STIG-Compliant Build)
+#
+# .USAGE
+#   sudo ./RHEL-09-611110.sh
+
+# Ensure pwquality configuration enforces at least one uppercase character
+CONF_FILE="/etc/security/pwquality.conf"
+sudo grep -q "^ucredit" "$CONF_FILE" && sudo sed -i "s/^ucredit.*/ucredit = -1/" "$CONF_FILE" || echo "ucredit = -1" | sudo tee -a "$CONF_FILE" > /dev/null
+echo "Password policy updated: requires at least one uppercase character."
